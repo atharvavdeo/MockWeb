@@ -4,12 +4,12 @@ A Retrieval-Augmented Generation (RAG) system that provides intelligent answers 
 
 ## Features
 
-- 🤖 **AI-Powered Responses**: Uses Google Gemini AI for intelligent automotive Q&A
-- 📚 **Wikipedia Integration**: Retrieves real-time information from Wikipedia
-- 🚗 **Automotive Focus**: Specialized for car brands, models, and automotive technology
-- 💬 **Interactive Chat**: Streamlit-based conversational interface
-- ⚡ **Smart Caching**: Optimized performance with intelligent caching
-- 🔍 **Query Normalization**: Handles various automotive company aliases
+-  **AI-Powered Responses**: Uses Google Gemini AI for intelligent automotive Q&A
+-  **Wikipedia Integration**: Retrieves real-time information from Wikipedia
+-  **Automotive Focus**: Specialized for car brands, models, and automotive technology
+-  **Interactive Chat**: Streamlit-based conversational interface
+-  **Smart Caching**: Optimized performance with intelligent caching
+-  **Query Normalization**: Handles various automotive company aliases
 
 ## Setup Instructions
 
@@ -65,62 +65,11 @@ The system recognizes common aliases for major automotive brands:
 3. **`logic/gemini_utils.py`**: Google Gemini AI integration
 4. **`logic/__init__.py`**: Module exports
 
-### Key Features
-
-- **Smart Caching**: Functions work both inside and outside Streamlit
-- **Error Handling**: Comprehensive error handling and debugging
-- **Query Normalization**: Handles automotive company aliases
-- **Context Building**: Intelligent context construction from Wikipedia data
-- **Debug Information**: Built-in debugging tools in the sidebar
-
-## Troubleshooting
-
-### Common Issues
-
-1. **ImportError: cannot import name 'parse_infobox'**
-   - ✅ **Fixed**: All imports are properly configured
-
-2. **ModuleNotFoundError**
-   - ✅ **Fixed**: All required packages are in `requirements.txt`
-   - Run: `pip install -r requirements.txt`
-
-3. **None returned from retrieve_wikipedia_data()**
-   - ✅ **Fixed**: Functions work outside Streamlit context
-   - Added fallback mechanisms
-
-4. **Thread 'MainThread': missing ScriptRunContext!**
-   - ✅ **Fixed**: Smart decorators detect Streamlit context
-
-5. **Wikipedia retrieval issues**
-   - ✅ **Fixed**: Added query normalization and multiple search attempts
-   - Better error handling for API failures
-
-6. **Gemini AI issues**
-   - ✅ **Fixed**: Added API key validation and model testing
-   - Comprehensive error handling
-
-7. **Streamlit UI issues**
-   - ✅ **Fixed**: Example buttons now properly trigger form submission
-   - Session state management improved
-
-8. **Caching issues**
-   - ✅ **Fixed**: Smart caching with fallbacks
-   - Performance optimizations added
-
-### Debug Information
-
-The application includes a debug panel in the sidebar that shows:
-- Model status
-- Environment variable status
-- Cache status
-- Real-time processing information
-
 ### Environment Variables
 
 Required:
 - `GEMINI_API_KEY`: Your Google Gemini API key
 
-## Development
 
 ### Project Structure
 ```
@@ -134,26 +83,3 @@ RAG_miniproj/
 ├── Dockerfile           # Docker configuration
 └── README.md           # This file
 ```
-
-### Key Improvements Made
-
-1. **Fixed Import Errors**: All module imports are properly configured
-2. **Added Missing Dependencies**: `python-dotenv` added to requirements
-3. **Streamlit Compatibility**: Functions work both inside and outside Streamlit
-4. **Wikipedia API Improvements**: Better error handling and query normalization
-5. **Gemini AI Enhancements**: API key validation and model testing
-6. **UI/UX Fixes**: Example buttons work correctly
-7. **Performance Optimizations**: Smart caching with fallbacks
-8. **Debug Tools**: Comprehensive debugging information
-
-## License
-
-This project is for educational purposes. Please ensure you have proper API keys and follow the terms of service for all external services used.
-
-## Support
-
-If you encounter any issues:
-1. Check the debug information in the sidebar
-2. Verify your API key is correctly set
-3. Ensure all dependencies are installed
-4. Check the console for error messages
