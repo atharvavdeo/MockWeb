@@ -1,0 +1,27 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Envs
+.env
+.env.*
+
+# OS files
+.DS_Store
+
+# Streamlit cache
+.streamlit/
+
+# PDFs and large docs
+*.pdf
+
+# Node and misc
+node_modules/
+
+# Python venvs
+.venv/
+venv/
+
+# Docker artifacts
+*.log
