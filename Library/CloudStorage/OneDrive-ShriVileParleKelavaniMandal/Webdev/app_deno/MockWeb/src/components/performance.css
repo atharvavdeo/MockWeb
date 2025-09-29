@@ -1,0 +1,75 @@
+/* Performance optimizations */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  will-change: transform;
+}
+
+/* Smooth scrolling for modern browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize animations */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reduce repaints for fixed elements */
+.fixed {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize backdrop blur performance */
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  will-change: backdrop-filter;
+}
+
+/* Custom Styles for Input Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #2D2D3A;
+  border-radius: 5px;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Thumb for Webkit browsers (Chrome, Safari) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #00F6FF;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 3px solid #0E0E12;
+  margin-top: -7px; /* This is to vertically center the thumb on the track */
+  transition: background-color 0.2s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #00B4BD;
+}
+
+/* Thumb for Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #00F6FF;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 3px solid #0E0E12;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #00B4BD;
+}

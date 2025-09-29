@@ -1,0 +1,161 @@
+/* EcoBackground.css */
+.eco-background {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #07080b;
+  pointer-events: none;
+}
+
+@keyframes grain-drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(40px); }
+}
+
+.blob, .grain-overlay, .vignette, .halo {
+  position: absolute;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.blob {
+  will-change: transform;
+}
+
+.blob-stack {
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transform: translate3d(0, 0, 0) rotate(calc(var(--progress) * 6deg));
+  transition: transform 0.16s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Primary Blob */
+.primary-blob {
+  left: 50%;
+  top: 40%;
+  transform: translate3d(-50%, -50%, 0) scale(calc(1 + var(--progress) * 1.6)) translateY(calc(var(--progress) * 42vh));
+  width: 50vmax;
+  height: 50vmax;
+  background: radial-gradient(
+    circle at center,
+    rgba(207, 232, 246, 0.15) 0%,
+    rgba(138, 186, 215, 0.22) 18%,
+    rgba(66, 108, 150, 0.62) 35%,
+    rgba(20, 30, 40, 0.88) 62%,
+    rgba(6, 8, 10, 1) 100%
+  );
+  filter: blur(calc(max(18px, 64px - var(--progress) * 46px)));
+  opacity: 0.95;
+  mix-blend-mode: screen;
+}
+
+/* Secondary Blob */
+.secondary-blob {
+  left: 18%;
+  top: 62%;
+  transform: translate3d(-50%, -50%, 0) scale(calc(1 + var(--progress) * 0.9));
+  width: 40vmax;
+  height: 40vmax;
+  background: radial-gradient(
+    circle at center,
+    rgba(84, 133, 160, 0.48) 0%,
+    rgba(44, 86, 120, 0.32) 30%,
+    rgba(8, 12, 18, 0.9) 70%
+  );
+  filter: blur(calc(max(30px, 48px - var(--progress) * 18px)));
+  opacity: calc(0.45 - var(--progress) * 0.25);
+  mix-blend-mode: multiply;
+}
+
+/* Tertiary Blob */
+.tertiary-blob {
+  left: 78%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: 45vmax;
+  height: 45vmax;
+  background: radial-gradient(
+    circle at center,
+    rgba(178, 220, 235, 0.12) 0%,
+    rgba(110, 170, 200, 0.18) 28%,
+    rgba(20, 28, 36, 0.85) 65%
+  );
+  filter: blur(calc(56px - var(--progress) * 22px));
+  opacity: calc(0.28 + var(--progress) * 0.08);
+  mix-blend-mode: overlay;
+}
+
+/* Grain Overlay */
+.grain-overlay {
+  inset: -50px;
+  opacity: 0.06;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grain-overlay > svg {
+    animation: grain-drift 40s linear infinite;
+  }
+}
+
+/* Vignette */
+.vignette {
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 30%,
+    rgba(3, 7, 12, 0.85) 100%
+  );
+}
+
+/* Central Halo */
+.halo {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vmax;
+  height: 60vmax;
+  background: radial-gradient(
+    circle at center,
+    rgba(207, 232, 246, 0.12) 0%,
+    transparent 40%
+  );
+  filter: blur(4px);
+  mix-blend-mode: screen;
+  opacity: calc(1 - var(--progress) * 1.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob, .blob-stack {
+    transition: none;
+  }
+}
+
+/* Add these keyframes and class at the end of the file */
+ @keyframes pulsate-primary {
+  0%, 100% { transform: translate3d(-50%, -50%, 0) scale(1.1); filter: blur(48px); opacity: 0.9; }
+  50% { transform: translate3d(-50%, -50%, 0) scale(1.5); filter: blur(64px); opacity: 0.7; }
+}
+ @keyframes pulsate-secondary {
+  0%, 100% { transform: translate3d(-50%, -50%, 0) scale(0.9); opacity: 0.3; }
+  50% { transform: translate3d(-50%, -50%, 0) scale(1.2); opacity: 0.5; }
+}
+ @keyframes pulsate-tertiary {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.4; }
+}
+
+.pulsate-animation .primary-blob {
+  animation: pulsate-primary 12s ease-in-out infinite;
+}
+.pulsate-animation .secondary-blob {
+  animation: pulsate-secondary 12s ease-in-out infinite 4s;
+}
+.pulsate-animation .tertiary-blob {
+  animation: pulsate-tertiary 12s ease-in-out infinite 8s;
+}

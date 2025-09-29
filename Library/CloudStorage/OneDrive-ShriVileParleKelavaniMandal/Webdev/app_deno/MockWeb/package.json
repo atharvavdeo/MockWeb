@@ -1,0 +1,42 @@
+{
+  "name": "app_deno",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@splinetool/react-spline": "^4.1.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^10.16.5",
+    "lucide-react": "^0.292.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.9.3",
+    "tailwind-merge": "^3.3.1",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "@types/react": "^19.1.15",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "@vitejs/plugin-react-swc": "^4.1.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.4.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7"
+  }
+}
