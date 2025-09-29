@@ -10,7 +10,7 @@ app = FastAPI()
 # Configure CORS
 origins = [
     "http://localhost:5173",  # Your React app's default address
-    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5173","https://mock-web-theta.vercel.app",
 ]
 app.add_middleware(
     CORSMiddleware,
